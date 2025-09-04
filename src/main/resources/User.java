@@ -1,10 +1,8 @@
 package com.thrilfix.SpringSecurity.Model;
 
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
-import javax.persistence.*;
 
 @Entity
 @Data

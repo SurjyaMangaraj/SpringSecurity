@@ -2,26 +2,36 @@ package com.thrilfix.SpringSecurity.Config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.web.SecurityFilterChain;
-
-import static org.springframework.security.config.Customizer.withDefaults;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class MySecurityConfig  extends  W {
+public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .httpBasic();
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication().withUser("surya").password("aaaa").roles("NORMAL");
+        auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ADMIN");
+    }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests(auth -> auth
-//                        .requestMatchers("/public/**").permitAll()   // allow public endpoints
-                        .anyRequest().authenticated()               // all others need login
-                )
-//                .formLogin(withDefaults())  // default login form
-                .httpBasic(withDefaults()); // enable basic auth
-
-        return http.build();
+    public PasswordEncoder paswordEncoder(){
+        return NoOpPasswordEncoder.getInstance();
     }
 }
