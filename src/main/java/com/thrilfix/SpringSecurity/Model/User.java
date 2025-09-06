@@ -3,6 +3,7 @@ package com.thrilfix.SpringSecurity.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @Table(name = "t_user")
+@NoArgsConstructor
 public class User {
 
     @Id
