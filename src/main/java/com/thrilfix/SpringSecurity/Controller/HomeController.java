@@ -13,13 +13,4 @@ public class HomeController {
         return "This is home.";
     }
 
-    @GetMapping("/login")
-    public String login(){
-        return "This is login.";
-    }
-
-    @GetMapping("/register")
-    public String register(){
-        return "This is register.";
-    }
 }
