@@ -40,14 +40,19 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
+        <!-- Thymeleaf template engine -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <!-- Database Driver -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version> <!-- ✅ add version explicitly -->
+            <version>8.0.33</version>
             <scope>runtime</scope>
         </dependency>
-
 
         <!-- Dev Tools (optional) -->
         <dependency>
