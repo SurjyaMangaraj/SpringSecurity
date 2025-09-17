@@ -10,6 +10,11 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(){
+        try {
+
+        }catch (Exception e){
+
+        }
         return "This is home.";
     }
 
