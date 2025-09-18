@@ -25,17 +25,8 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/signin")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout")     // default is "/logout"
-                .logoutSuccessHandler((request, response, authentication) -> {
-                    response.setStatus(HttpServletResponse.SC_OK);
-                    response.getWriter().write("Logout Successful");
-                })
-                .invalidateHttpSession(true)
-                .deleteCookies("JSESSIONID")
-                .permitAll();
+                .loginProcessingUrl("/dologin")
+                .defaultSuccessUrl("/users/");
     }
 
     @Override
